@@ -16,8 +16,10 @@ get_service = services.get_service
 update_availabilty = services.update_availabilty
 select_availabilty = services.select_availabilty
 delete_service = services.delete_service
+get_servicelist = services.get_servicelist
 
 #locations
+add_location = locations.add_location
 get_loc_list = locations.get_loc_list
 get_loc_id = locations.get_loc_id
 get_loc_name = locations.get_loc_name

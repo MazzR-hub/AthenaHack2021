@@ -11,6 +11,8 @@ def add_services(servicesDict):
          'location': [string],
          'serviceType': [string],
          'points': [int],
+         'price' :[float],
+         'user_id':[int]
          }
 
     Returns:
@@ -23,10 +25,10 @@ def add_services(servicesDict):
         conn = connect.db_connection()
         print(conn)
         c = conn.cursor()
-        c.execute("INSERT INTO services(name, available, type, points,location_id)\
-                    VALUES(%s,%s,%s,%s,%s)\
-                    RETURNING service_id;",(servicesDict['name'],servicesDict['available'],\
-                    servicesDict['serviceType'],servicesDict['points'],servicesDict['location']))
+        c.execute("INSERT INTO services(name, available, type, points,location_id,price,user_id)\
+                    VALUES(%s,%s,%s,%s,%s,%s,%s)\
+                    RETURNING service_id;",(servicesDict['name'],servicesDict['available'],
+                    servicesDict['serviceType'],servicesDict['points'],servicesDict['location'],servicesDict['price'],servicesDict['user_id']))
         conn.commit()
         service_id = c.fetchall()[0]
         c.close()
@@ -38,14 +40,14 @@ def add_services(servicesDict):
         if conn is not None:
             conn.close()
 
-def get_service_id_from_name(name,location):
+def get_service_id_from_name(name,user_id):
     """ FINISH"""
     details= None
     conn = None
     try:
         conn = connect.db_connection()
         c = conn.cursor()
-        c.execute("SELECT service_id FROM services WHERE name =%s AND location_id = %s;",(name,location))
+        c.execute("SELECT service_id FROM services WHERE name =%s AND user_id = %s;",(name,user_id))
 
         conn.commit()
         details = c.fetchall()[0]
@@ -142,3 +144,22 @@ def delete_service(service_id):
             conn.close()
     return 1
 
+def get_servicelist():
+    """returns a list with tuples in off all the sevices available
+    in the format, user_is, name, available, type, points, location_id, price, user_id """
+    details= None
+    conn =None
+    try:
+        conn = connect.db_connection()
+        c = conn.cursor()
+        c.execute("SELECT * FROM services;")
+        conn.commit()
+        details = c.fetchall()
+        c.close()
+        conn.close()
+    except Exception as error:
+        print(error)
+    finally:
+        if conn is not None:
+            conn.close()
+    return details
