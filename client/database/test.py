@@ -2,7 +2,7 @@
 import api
 import datetime
 
-#print(api.add_services({'name':'Ladder','available':True,'location':'1','serviceType':"Hire",'points':10}))
+#print(api.add_services({'name':'Ladder','available':True,'location':1,'serviceType':"Hire",'points':10,'price':2.50,'user_id':1}))
 
 #print(api.get_service_id_from_name("Ladder",'1'))
 
@@ -13,6 +13,8 @@ import datetime
 #print(api.select_availabilty('1'))
 
 #print(api.delete_service('1'))
+
+#print(api.get_servicelist())
 
 '''print(api.add_user({'firstname': 'Aqsa',
          'surname': 'Saied',
@@ -37,4 +39,4 @@ import datetime
         }))'''
 
 #print(api.get_user_details(1))  
-
+print(api.add_location({'name':'Burley','address':'123 real street','city':'Leeds','user_id':1,'postcode':'LS12 3AB'}))
