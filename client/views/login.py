@@ -1,6 +1,7 @@
 from flask import Blueprint, render_template
 from flask_login import current_user, login_user
 from client.models import User
+from client.database import api
 
 login = Blueprint('login', __name__, template_folder='templates',
                  static_folder='static')
@@ -31,8 +32,7 @@ def display_signup():
     if form.validate_on_submit():
         user = User(username=form.username.data, email=form.email.data)
         user.set_password(form.password.data)
-        db.session.add(user)
-        db.session.commit()
+        
         flash('Congratulations, you are now a registered user!')
         return redirect('/login')
     return render_template('signup.html', title='Register', form=form)
