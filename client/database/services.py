@@ -1,8 +1,8 @@
-import connect
+from client.database import connect
 
 def add_services(servicesDict):
     """
-    Add a new service to user table 
+    Add a new service to user table
 
     Args:
         userDict: A dictionary in the form
@@ -19,7 +19,7 @@ def add_services(servicesDict):
         service_id if successful
 
     """
-    
+
     conn = None
     try:
         conn = connect.db_connection()

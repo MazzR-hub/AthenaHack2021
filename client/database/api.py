@@ -1,10 +1,10 @@
-import services
-import users
-import locations
-import bookings
+from client.database import services
+from client.database import users
+from client.database import locations
+from client.database import bookings
 
 # users functions
-add_user = users.add_user    
+add_user = users.add_user
 update_membership = users.update_membership
 update_location = users.update_location
 get_user_details = users.get_user_details
@@ -26,4 +26,3 @@ get_loc_name = locations.get_loc_name
 
 #bookings
 create_booking = bookings.create_booking
-

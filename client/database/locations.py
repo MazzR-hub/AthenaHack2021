@@ -1,4 +1,4 @@
-import connect
+from client.database import connect
 ''' add the actual address now its gonna work more like users can have multiple addresses
     has address and lims to userid
  '''
@@ -50,7 +50,7 @@ def get_loc_list():
     finally:
         if conn is not None:
             conn.close()
-    
+
     return locations
 
 def get_loc_name(locId):
@@ -72,7 +72,7 @@ def get_loc_name(locId):
     finally:
         if conn is not None:
             conn.close()
-    
+
     return location
 
 def get_loc_id(name):
@@ -94,5 +94,5 @@ def get_loc_id(name):
     finally:
         if conn is not None:
             conn.close()
-    
+
     return locId

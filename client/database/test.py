@@ -1,5 +1,5 @@
 #gonna write some basic tests
-import api
+from client.database import api
 import datetime
 
 #print(api.add_services({'name':'Ladder','available':True,'location':'1','serviceType':"Hire",'points':10}))
@@ -36,5 +36,4 @@ import datetime
         'serviceId':'2'
         }))'''
 
-#print(api.get_user_details(1))  
-
+#print(api.get_user_details(1))

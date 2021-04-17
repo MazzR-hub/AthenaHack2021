@@ -1,11 +1,11 @@
-import connect
+from client.database import connect
 from passlib.hash import bcrypt
 
 '''table has'''
 
 def add_user(userDict):
     """
-    Add a new user to user table 
+    Add a new user to user table
 
     Args:
         userDict: A dictionary in the form
@@ -20,7 +20,7 @@ def add_user(userDict):
     Returns:
         user_id
     """
-    
+
     sql = "INSERT INTO Users(first_name, surname, email, password, membership, location_id) VALUES (%s, %s, %s, %s, %s, %s) RETURNING user_id;"
     user_id = None
     conn = None
@@ -39,7 +39,7 @@ def add_user(userDict):
             conn.close()
 
     return user_id
-    
+
 def update_membership(memberBool, userId):
     """
     Update the membership status for a single user
@@ -68,7 +68,7 @@ def update_membership(memberBool, userId):
     finally:
         if conn is not None:
             conn.close()
-    
+
     return updatedRows
 
 def update_location(locId, userId):
@@ -99,7 +99,7 @@ def update_location(locId, userId):
     finally:
         if conn is not None:
             conn.close()
-    
+
     return updatedRows
 
 def get_user_details(userId):
@@ -129,7 +129,5 @@ def get_user_details(userId):
     finally:
         if conn is not None:
             conn.close()
-    
+
     return details
-
-

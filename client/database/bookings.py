@@ -1,5 +1,5 @@
-import connect
-import services
+from client.database import connect
+from client.database import services
 
 def create_booking(bDict):
     """
@@ -7,7 +7,7 @@ def create_booking(bDict):
     """
     sql = "INSERT INTO Bookings (start_date, end_date, user_id, service_id)\
            VALUES (%s, %s, %s, %s) RETURNING booking_id;"
-    
+
     booking_id = None
     conn = None
 
