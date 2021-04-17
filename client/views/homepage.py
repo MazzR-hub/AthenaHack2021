@@ -1,6 +1,6 @@
 from flask import Blueprint, render_template
 
-frontpage = Blueprint('homepage', __name__, template_folder='templates',
+homepage = Blueprint('homepage', __name__, template_folder='templates',
                       static_folder='static')
 
 homepage_url = 'index.html'
