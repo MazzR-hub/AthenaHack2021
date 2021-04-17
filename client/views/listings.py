@@ -5,5 +5,5 @@ listings = Blueprint('listings', __name__, template_folder='templates', static_f
 
 @listings.route('/listings', methods=['GET', 'POST'])
 def display_listings():
-    listedItems = ['hello', 'world']
+    listedItems = ['hi', 'you', 'suck']
     return render_template('listings.html', listedItems=listedItems)
