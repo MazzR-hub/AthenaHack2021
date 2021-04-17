@@ -6,10 +6,10 @@ login = Blueprint('login', __name__, template_folder='templates',
 login_url = 'login.html'
 signup_url = 'signup.html'
 
-@login.route('/'+login_url, methods=['GET', 'POST'])
+@login.route('/login', methods=['GET', 'POST'])
 def display_login():
     return render_template(login_url)
 
-@login.route('/'+signup_url, methods=['GET', 'POST'])
+@login.route('/signup', methods=['GET', 'POST'])
 def display_signup():
     return render_template(signup_url)
