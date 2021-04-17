@@ -1,6 +1,8 @@
 import connect
 from passlib.hash import bcrypt
 
+'''table has'''
+
 def add_user(userDict):
     """
     Add a new user to user table 

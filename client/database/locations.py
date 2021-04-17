@@ -1,4 +1,35 @@
 import connect
+''' add the actual address now its gonna work more like users can have multiple addresses
+    has address and lims to userid
+ '''
+
+def add_location(locationsDict):
+    """  args {name: string,
+               address: string
+               city: string,
+               user_id: int,
+               postcode: string}
+        returns location id """
+    conn = None
+    try:
+        conn = connect.db_connection()
+        print(conn)
+        c = conn.cursor()
+        c.execute("INSERT INTO locations(name, address, city, user_id,postcode)\
+                    VALUES(%s,%s,%s,%s,%s)\
+                    RETURNING location_id;",(locationsDict['name'],locationsDict['address'],
+                    locationsDict['city'],locationsDict['user_id'],locationsDict['postcode']))
+        conn.commit()
+        location_id = c.fetchall()[0]
+        c.close()
+        conn.close()
+        return location_id
+    except Exception as error:
+        print(error)
+    finally:
+        if conn is not None:
+            conn.close()
+
 
 def get_loc_list():
     """
