@@ -7,32 +7,69 @@
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+        
+    <!-- Stylesheet -->
+        <link rel="preconnect" href="https://fonts.gstatic.com">
+        <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+        <link href='all.css' rel='stylesheet'>
 
-    <title>View Available Items</title>
+    <title>Available Tools</title>
 
   </head>
   <body>
-
-    <div class="pos-f-t">
-        <div class="collapse" id="navbarToggleExternalContent">
-          <div class="bg-dark p-4">
-            <a class="nav-link text-white" href="home">Home</a>
-            <a class="nav-link text-white" href="account">My Account</a>
-          </div>
-        </div>
-        <nav class="navbar navbar-dark bg-dark">
-          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-          </button>
-        </nav>
-    </div>
-
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <a class="navbar-brand logo-font" href="home.html" id="brand">CommuniTools</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNavDropdown">
+        <ul class="navbar-nav">
+          <li class="nav-item active">
+            <a class="nav-link" href="home.html">Home <span class="sr-only">(current)</span></a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="listings.html">Borrow</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="newlist.html">Rent Tools</a>
+          </li>
+        </ul>
+      </div>
+      <a class="nav-link" href="account.html">My Account</a>
+    </nav>
     <div class="container mt-4">
-      <h1>Listings near me</h1>
-    </div>
-
-    <!-- Dynamic list for items-->
-    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-12 col-md-10 col-lg-8">
+            <form class="card card-sm">
+                <div class="card-body row no-gutters align-items-center">
+                    <div class="col-8">
+                        <input class="form-control form-control-med form-control-borderless" type="search" placeholder="Search topics or keywords">
+                    </div>
+                    <!--end of col-->
+                    <div class="col-1"></div>
+                    <div class="col-auto">
+                        <button class="btn btn-med btn-success" type="submit">Search</button>
+                    </div>
+                    <!--end of col-->
+                </div>
+                
+                
+                <!-- Filter drop down -->
+                <div class="filter">
+                  <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Filter
+                  </button>
+                  <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                    <a class="dropdown-item" href="#">Action</a>
+                    <a class="dropdown-item" href="#">Another action</a>
+                    <a class="dropdown-item" href="#">Something else here</a>
+                  </div>
+                </div>
+            </form>
+        </div>
+        <!--end of col-->
+      </div>
+      <!-- Dynamic list for items-->
       <div class="list-items">
           <ul class="list-group">
               {% listedItems %}
@@ -42,6 +79,7 @@
 
 
 
+     
     <!-- Bootstrap Bundle with Popper -->
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
