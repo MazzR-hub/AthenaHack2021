@@ -8,6 +8,7 @@ add_user = users.add_user
 update_membership = users.update_membership
 update_location = users.update_location
 get_user_details = users.get_user_details
+get_user_details_by_email = users.get_user_details_by_email
 
 #services functions
 add_services = services.add_services

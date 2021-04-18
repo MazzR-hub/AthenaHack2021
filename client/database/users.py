@@ -131,3 +131,33 @@ def get_user_details(userId):
             conn.close()
 
     return details
+
+def get_user_details_by_email(email):
+    """
+    Gets all details for a single user
+
+    Args:
+        email: the users email address
+    Returns:
+        details: array of [userId, firstname, surname, location]
+    """
+
+    sql = "SELECT Users.userId, Users.first_name, Users.surname, Locations.location_id FROM Users\
+        INNER JOIN Locations ON Locations.location_id = Users.location_id\
+        WHERE Users.email = %s;"
+    conn = None
+    details = None
+
+    try:
+        conn = connect.db_connection()
+        c = conn.cursor()
+        c.execute(sql, (email,))
+        details = c.fetchall()
+        c.close()
+    except Exception as error:
+        print(error)
+    finally:
+        if conn is not None:
+            conn.close()
+
+    return details
