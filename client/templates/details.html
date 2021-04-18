@@ -8,16 +8,17 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
     
-    <title>Add an Item</title>
+    <title>My Bookings</title>
 
   </head>
   <body>
-      
+      <!-- first name surname email password membership locationid -->
+      <!-- location:  name, address, city, userid, postcode-->
     <div class="pos-f-t">
         <div class="collapse" id="navbarToggleExternalContent">
           <div class="bg-dark p-4">
             <a class="nav-link text-white" href="home.html">Home</a>
-            <a class="nav-link text-white" href="account.html">My Account</a>
+            <a class="nav-link text-white" href="listings.html">Borrow an Item</a>
           </div>
         </div>
         <nav class="navbar navbar-dark bg-dark">
@@ -28,7 +29,7 @@
     </div>
 
     <div class="container mt-4">
-        <h1>Add an Item Listing</h1>
+      <h1>Addresses</h1>
     </div>
 
     <!-- Input form-->
@@ -36,46 +37,35 @@
         <form>
             <div class="form-row">
               <div class="form-group col-md-6">
-                <label for="inputName1">Item Name</label>
-                <input type="text" class="form-control" id="inputName1" placeholder="Name">
+                <label for="inputAdd1">Address Line 1</label>
+                <input type="text" class="form-control" id="inputAdd1" placeholder="Address">
               </div>
             </div>
 
-            <!-- Picklist of addresses -->
             <div class="form-row">
-                <div class="form-group">
-                    <label for="addressSelect">Address</label>
-                    <select multiple class="form-control" id="addresssSelect">
-                        {% address-options %}
-                    </select>
+                <div class="form-group col-md-6">
+                    <label for="inputAdd2">Address Line 2</label>
+                    <input type="text" class="form-control" id="inputAdd2" placeholder="Address">
                 </div>
             </div>
 
             <div class="form-row">
-              <div class="form-group col-md-2">
-                <label for="inputPrice">Price</label>
-                <input type="text" class="form-control" id="inputPrice">
-              </div>
+                <div class="form-group col-md-2">
+                    <label for="inputCity">City</label>
+                    <input type="text" class="form-control" id="inputCity">
+                </div>
+                <div class="form-group col-md-2">
+                    <label for="inputPost">Postcode</label>
+                    <input type="text" class="form-control" id="inputPost">
+                </div>
             </div>
-            <div class="form-row">
-              <div class="form-group col-md-4">
-                <label for="inputStartDate">Start Date</label>
-                <input type="date" class="form-control" id="inputStartDate">
-                <!-- <select id="inputState" class="form-control">
-                  <option selected>Choose...</option>
-                  <option>...</option>
-                </select> -->
-              </div>
-              <div class="form-group col-md-4">
-                <label for="inputEndDate">End Date</label>
-                <input type="date" class="form-control" id="inputEndDate">
-              </div>
-            </div>
-            <button type="submit" class="btn btn-primary">Add Item</button>
+            
+            <button type="submit" class="btn btn-primary">Add address</button>
           </form>
     </div>
 
-    
+
+     
     <!-- Bootstrap Bundle with Popper -->
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
