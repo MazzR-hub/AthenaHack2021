@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+
+    <title>View Available Items</title>
+
+  </head>
+
+<body>
+<br>
+<h2 class="text-center">Sign in to your account</h2>
+<br>
+<div class="login-page container-fluid justify-content-center">
+    <div class="login-box col-6">
+      <form action="" method="post" class=".form-horizontal">
+        <div class="form-group">
+          <label for="email">Email address:</label>
+          <input type="email" class="form-control" name="email" value = "{{ request.form.email }}">
+        </div>
+        <div class="form-group">
+          <label for="pwd">Password:</label>
+          <input type="password" class="form-control" name="password" value = "{{ request.form.password }}">
+        </div>
+        <input type="submit" class="btn btn-outline-dark" value="Login">
+      </form>
+      {% if invalid %}
+        <p class="invalid"><strong>Error:</strong> {{ invalid }}
+      {% endif %}
+      {% if message %}
+         <p class="message login-link">{{ message }}
+      {% endif %}
+    </div>
+    <p> Don't have an account? <a href="/signup">Sign up</a>
+</div>
+<!-- Bootstrap Bundle with Popper -->
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+</body>
+</html>

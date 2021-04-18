@@ -1,0 +1,696 @@
+--
+-- PostgreSQL database dump
+--
+
+-- Dumped from database version 10.16 (Ubuntu 10.16-0ubuntu0.18.04.1)
+-- Dumped by pg_dump version 10.16 (Ubuntu 10.16-0ubuntu0.18.04.1)
+
+SET statement_timeout = 0;
+SET lock_timeout = 0;
+SET idle_in_transaction_session_timeout = 0;
+SET client_encoding = 'UTF8';
+SET standard_conforming_strings = on;
+SELECT pg_catalog.set_config('search_path', '', false);
+SET check_function_bodies = false;
+SET xmloption = content;
+SET client_min_messages = warning;
+SET row_security = off;
+
+--
+-- Name: plpgsql; Type: EXTENSION; Schema: -; Owner: 
+--
+
+CREATE EXTENSION IF NOT EXISTS plpgsql WITH SCHEMA pg_catalog;
+
+
+--
+-- Name: EXTENSION plpgsql; Type: COMMENT; Schema: -; Owner: 
+--
+
+COMMENT ON EXTENSION plpgsql IS 'PL/pgSQL procedural language';
+
+
+SET default_tablespace = '';
+
+SET default_with_oids = false;
+
+--
+-- Name: bookings; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE public.bookings (
+    booking_id integer NOT NULL,
+    start_date date NOT NULL,
+    end_date date NOT NULL,
+    user_id integer NOT NULL,
+    service_id integer NOT NULL
+);
+
+
+ALTER TABLE public.bookings OWNER TO postgres;
+
+--
+-- Name: bookings_booking_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE public.bookings_booking_id_seq
+    AS integer
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.bookings_booking_id_seq OWNER TO postgres;
+
+--
+-- Name: bookings_booking_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+--
+
+ALTER SEQUENCE public.bookings_booking_id_seq OWNED BY public.bookings.booking_id;
+
+
+--
+-- Name: bookings_service_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE public.bookings_service_id_seq
+    AS integer
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.bookings_service_id_seq OWNER TO postgres;
+
+--
+-- Name: bookings_service_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+--
+
+ALTER SEQUENCE public.bookings_service_id_seq OWNED BY public.bookings.service_id;
+
+
+--
+-- Name: bookings_user_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE public.bookings_user_id_seq
+    AS integer
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.bookings_user_id_seq OWNER TO postgres;
+
+--
+-- Name: bookings_user_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+--
+
+ALTER SEQUENCE public.bookings_user_id_seq OWNED BY public.bookings.user_id;
+
+
+--
+-- Name: locations; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE public.locations (
+    location_id integer NOT NULL,
+    name character varying NOT NULL,
+    address character varying(50),
+    city character varying(30),
+    user_id integer,
+    postcode character varying(10)
+);
+
+
+ALTER TABLE public.locations OWNER TO postgres;
+
+--
+-- Name: location_location_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE public.location_location_id_seq
+    AS integer
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.location_location_id_seq OWNER TO postgres;
+
+--
+-- Name: location_location_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+--
+
+ALTER SEQUENCE public.location_location_id_seq OWNED BY public.locations.location_id;
+
+
+--
+-- Name: price; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE public.price (
+    id integer NOT NULL,
+    price integer NOT NULL
+);
+
+
+ALTER TABLE public.price OWNER TO postgres;
+
+--
+-- Name: price_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE public.price_id_seq
+    AS integer
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.price_id_seq OWNER TO postgres;
+
+--
+-- Name: price_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+--
+
+ALTER SEQUENCE public.price_id_seq OWNED BY public.price.id;
+
+
+--
+-- Name: price_price_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE public.price_price_seq
+    AS integer
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.price_price_seq OWNER TO postgres;
+
+--
+-- Name: price_price_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+--
+
+ALTER SEQUENCE public.price_price_seq OWNED BY public.price.price;
+
+
+--
+-- Name: services; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE public.services (
+    service_id integer NOT NULL,
+    name character varying NOT NULL,
+    available boolean NOT NULL,
+    type character varying NOT NULL,
+    points integer NOT NULL,
+    location_id integer NOT NULL,
+    price double precision,
+    user_id integer NOT NULL
+);
+
+
+ALTER TABLE public.services OWNER TO postgres;
+
+--
+-- Name: services_location_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE public.services_location_id_seq
+    AS integer
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.services_location_id_seq OWNER TO postgres;
+
+--
+-- Name: services_location_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+--
+
+ALTER SEQUENCE public.services_location_id_seq OWNED BY public.services.location_id;
+
+
+--
+-- Name: services_points_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE public.services_points_seq
+    AS integer
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.services_points_seq OWNER TO postgres;
+
+--
+-- Name: services_points_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+--
+
+ALTER SEQUENCE public.services_points_seq OWNED BY public.services.points;
+
+
+--
+-- Name: services_service_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE public.services_service_id_seq
+    AS integer
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.services_service_id_seq OWNER TO postgres;
+
+--
+-- Name: services_service_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+--
+
+ALTER SEQUENCE public.services_service_id_seq OWNED BY public.services.service_id;
+
+
+--
+-- Name: services_user_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE public.services_user_id_seq
+    AS integer
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.services_user_id_seq OWNER TO postgres;
+
+--
+-- Name: services_user_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+--
+
+ALTER SEQUENCE public.services_user_id_seq OWNED BY public.services.user_id;
+
+
+--
+-- Name: users; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE public.users (
+    user_id integer NOT NULL,
+    first_name character varying NOT NULL,
+    surname character varying NOT NULL,
+    email character varying NOT NULL,
+    password character varying NOT NULL,
+    membership boolean NOT NULL,
+    location_id integer NOT NULL
+);
+
+
+ALTER TABLE public.users OWNER TO postgres;
+
+--
+-- Name: users_location_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE public.users_location_id_seq
+    AS integer
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.users_location_id_seq OWNER TO postgres;
+
+--
+-- Name: users_location_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+--
+
+ALTER SEQUENCE public.users_location_id_seq OWNED BY public.users.location_id;
+
+
+--
+-- Name: users_user_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE public.users_user_id_seq
+    AS integer
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.users_user_id_seq OWNER TO postgres;
+
+--
+-- Name: users_user_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+--
+
+ALTER SEQUENCE public.users_user_id_seq OWNED BY public.users.user_id;
+
+
+--
+-- Name: bookings booking_id; Type: DEFAULT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.bookings ALTER COLUMN booking_id SET DEFAULT nextval('public.bookings_booking_id_seq'::regclass);
+
+
+--
+-- Name: bookings user_id; Type: DEFAULT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.bookings ALTER COLUMN user_id SET DEFAULT nextval('public.bookings_user_id_seq'::regclass);
+
+
+--
+-- Name: bookings service_id; Type: DEFAULT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.bookings ALTER COLUMN service_id SET DEFAULT nextval('public.bookings_service_id_seq'::regclass);
+
+
+--
+-- Name: locations location_id; Type: DEFAULT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.locations ALTER COLUMN location_id SET DEFAULT nextval('public.location_location_id_seq'::regclass);
+
+
+--
+-- Name: price id; Type: DEFAULT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.price ALTER COLUMN id SET DEFAULT nextval('public.price_id_seq'::regclass);
+
+
+--
+-- Name: price price; Type: DEFAULT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.price ALTER COLUMN price SET DEFAULT nextval('public.price_price_seq'::regclass);
+
+
+--
+-- Name: services service_id; Type: DEFAULT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.services ALTER COLUMN service_id SET DEFAULT nextval('public.services_service_id_seq'::regclass);
+
+
+--
+-- Name: services points; Type: DEFAULT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.services ALTER COLUMN points SET DEFAULT nextval('public.services_points_seq'::regclass);
+
+
+--
+-- Name: services location_id; Type: DEFAULT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.services ALTER COLUMN location_id SET DEFAULT nextval('public.services_location_id_seq'::regclass);
+
+
+--
+-- Name: services user_id; Type: DEFAULT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.services ALTER COLUMN user_id SET DEFAULT nextval('public.services_user_id_seq'::regclass);
+
+
+--
+-- Name: users user_id; Type: DEFAULT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.users ALTER COLUMN user_id SET DEFAULT nextval('public.users_user_id_seq'::regclass);
+
+
+--
+-- Name: users location_id; Type: DEFAULT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.users ALTER COLUMN location_id SET DEFAULT nextval('public.users_location_id_seq'::regclass);
+
+
+--
+-- Data for Name: bookings; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY public.bookings (booking_id, start_date, end_date, user_id, service_id) FROM stdin;
+2	2021-04-17	2021-04-19	1	2
+\.
+
+
+--
+-- Data for Name: locations; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY public.locations (location_id, name, address, city, user_id, postcode) FROM stdin;
+1	Leeds	\N	\N	\N	\N
+2	Burley	123 real street	Leeds	1	LS12 3AB
+\.
+
+
+--
+-- Data for Name: price; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY public.price (id, price) FROM stdin;
+\.
+
+
+--
+-- Data for Name: services; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY public.services (service_id, name, available, type, points, location_id, price, user_id) FROM stdin;
+2	hoover	f	cleaning	0	1	\N	1
+3	Ladder	t	Hire	10	1	\N	2
+4	Ladder	t	Hire	10	1	2.5	1
+\.
+
+
+--
+-- Data for Name: users; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY public.users (user_id, first_name, surname, email, password, membership, location_id) FROM stdin;
+2	Aqsa	Saied	aqsa.saied@gmail.com	$2b$12$IfC36r2cklh63gfsXAC.z.fDUmQT32Bx.MyDpeYzBQBRewSnbjXFW	f	1
+3	Aqsa	Saied	aqsa.saied@gmail.com	$2b$12$hT0Cig2p/GBiKzA45YqoMutP6qHPO5YMFtfbVrEZlqPqnfchV9bQG	f	1
+4	Aqsa	Saied	aqsa.saied@gmail.com	$2b$12$fiQZc6axz3818.fiAskU4eGHJwZC1ydsWLX3PrL0yM5cRsXAyTOMu	f	1
+1	Aqsa	Saied	aqsa.saied@gmail.com	$2b$12$GxwiH4GkfZvp/8ooGJWgWuOBBuamOu3uBJ.jorpGhuEiZWeyJq2ne	t	1
+\.
+
+
+--
+-- Name: bookings_booking_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('public.bookings_booking_id_seq', 2, true);
+
+
+--
+-- Name: bookings_service_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('public.bookings_service_id_seq', 1, false);
+
+
+--
+-- Name: bookings_user_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('public.bookings_user_id_seq', 1, false);
+
+
+--
+-- Name: location_location_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('public.location_location_id_seq', 2, true);
+
+
+--
+-- Name: price_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('public.price_id_seq', 1, false);
+
+
+--
+-- Name: price_price_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('public.price_price_seq', 1, false);
+
+
+--
+-- Name: services_location_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('public.services_location_id_seq', 1, false);
+
+
+--
+-- Name: services_points_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('public.services_points_seq', 1, false);
+
+
+--
+-- Name: services_service_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('public.services_service_id_seq', 4, true);
+
+
+--
+-- Name: services_user_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('public.services_user_id_seq', 2, true);
+
+
+--
+-- Name: users_location_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('public.users_location_id_seq', 1, false);
+
+
+--
+-- Name: users_user_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('public.users_user_id_seq', 4, true);
+
+
+--
+-- Name: bookings bookings_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.bookings
+    ADD CONSTRAINT bookings_pkey PRIMARY KEY (booking_id);
+
+
+--
+-- Name: locations location_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.locations
+    ADD CONSTRAINT location_pkey PRIMARY KEY (location_id);
+
+
+--
+-- Name: services services_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.services
+    ADD CONSTRAINT services_pkey PRIMARY KEY (service_id);
+
+
+--
+-- Name: users users_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.users
+    ADD CONSTRAINT users_pkey PRIMARY KEY (user_id);
+
+
+--
+-- Name: bookings bookings_service_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.bookings
+    ADD CONSTRAINT bookings_service_id_fkey FOREIGN KEY (service_id) REFERENCES public.services(service_id);
+
+
+--
+-- Name: bookings bookings_user_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.bookings
+    ADD CONSTRAINT bookings_user_id_fkey FOREIGN KEY (user_id) REFERENCES public.users(user_id);
+
+
+--
+-- Name: users constraint_fk; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.users
+    ADD CONSTRAINT constraint_fk FOREIGN KEY (location_id) REFERENCES public.locations(location_id);
+
+
+--
+-- Name: services constraint_ser; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.services
+    ADD CONSTRAINT constraint_ser FOREIGN KEY (location_id) REFERENCES public.locations(location_id);
+
+
+--
+-- Name: locations constraint_ser; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.locations
+    ADD CONSTRAINT constraint_ser FOREIGN KEY (user_id) REFERENCES public.users(user_id);
+
+
+--
+-- Name: services location_constraint; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.services
+    ADD CONSTRAINT location_constraint FOREIGN KEY (user_id) REFERENCES public.users(user_id);
+
+
+--
+-- Name: locations location_constraint; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.locations
+    ADD CONSTRAINT location_constraint FOREIGN KEY (user_id) REFERENCES public.users(user_id);
+
+
+--
+-- Name: services services_constraint; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.services
+    ADD CONSTRAINT services_constraint FOREIGN KEY (user_id) REFERENCES public.users(user_id);
+
+
+--
+-- PostgreSQL database dump complete
+--
+

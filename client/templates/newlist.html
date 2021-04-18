@@ -1,0 +1,105 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    
+    <!-- Stylesheet -->
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+    <link href='all.css' rel='stylesheet'>
+
+    <title>New Tool Listing</title>
+
+  </head>
+
+  
+  <body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <a class="navbar-brand logo-font" href="home.html" id="brand">CommuniTools</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNavDropdown">
+        <ul class="navbar-nav">
+          <li class="nav-item active">
+            <a class="nav-link" href="home.html">Home <span class="sr-only">(current)</span></a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="listings.html">Borrow</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="newlist.html">Rent Tools</a>
+          </li>
+        </ul>
+      </div>
+      <a class="nav-link" href="account.html">My Account</a>
+    </nav>
+
+    <!-- Input form-->
+    <div class="container mt-4">
+        <form>
+            <div class="container border rounded">
+                <div class="col-md-2 float-right mr-5 mt-3">
+                    <div class="avatar">
+                    <img src="images/tools.jpg" alt="..." class="avatar-img rounded-circle" />
+                    </div>
+                    <div class="form-group mt-3">
+                        <input type="file" class="form-control-file" id="exampleFormControlFile1">
+                    </div>
+                </div>
+
+                <div class="form-row">
+                <div class="form-group col-md-6 mt-3">
+                    <label for="inputName1">Item Name</label>
+                    <input type="text" class="form-control" id="inputName1" placeholder="Name">
+                </div>
+                </div>
+
+                <!-- Picklist of addresses -->
+                <div class="form-row">
+                    <div class="form-group col-md-8">
+                        <label for="addressSelect">Address</label>
+                        <select multiple class="form-control" id="addresssSelect">
+                            {% address-options %}
+                        </select>
+                    </div>
+                </div>
+
+                <div class="form-row">
+                <div class="form-group col-md-2">
+                    <label for="inputPrice">Price</label>
+                    <input type="text" class="form-control" id="inputPrice">
+                </div>
+                </div>
+                <div class="form-row">
+                <div class="form-group col-md-4">
+                    <label for="inputStartDate">Start Date</label>
+                    <input type="date" class="form-control" id="inputStartDate">
+                    <!-- <select id="inputState" class="form-control">
+                    <option selected>Choose...</option>
+                    <option>...</option>
+                    </select> -->
+                </div>
+                <div class="form-group col-md-4">
+                    <label for="inputEndDate">End Date</label>
+                    <input type="date" class="form-control" id="inputEndDate">
+                </div>
+                </div>
+            </div>
+            <button type="submit" class="btn btn-primary mb-4 mt-4">Add Item</button>
+          </form>
+    </div>
+
+    
+    <!-- Bootstrap Bundle with Popper -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+
+  </body>
+</html>
