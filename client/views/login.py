@@ -1,6 +1,6 @@
 from flask import Blueprint, render_template
 from flask_login import current_user, login_user
-from client.models import User
+from client.models import User, RegistrationForm, LoginForm
 from client.database import api
 
 login = Blueprint('login', __name__, template_folder='templates',
@@ -15,12 +15,9 @@ def display_login():
         return redirect('/userpage')
     form = LoginForm()
     if form.validate_on_submit():
-        user = User.query.filter_by(username=form.username.data).first()
-        if user is None or not user.check_password(form.password.data):
-            flash('Invalid username or password')
-            return redirect('/login')
-        login_user(user, remember=form.remember_me.data)
-        return redirect('/userpage')
+
+        #doesn't work
+        return redirect('/home')
 
     return render_template('login.html', title='Sign In', form=form)
 
@@ -30,9 +27,8 @@ def display_signup():
         return redirect()
     form = RegistrationForm()
     if form.validate_on_submit():
-        user = User(username=form.username.data, email=form.email.data)
-        user.set_password(form.password.data)
-        
+        user = User(email=form.email.data, first_name=form.first_name.data, surname=form.surname.data, password=from.password.data, membership=false, locId=1)
+        new_id = api.add_user(user)
         flash('Congratulations, you are now a registered user!')
         return redirect('/login')
     return render_template('signup.html', title='Register', form=form)

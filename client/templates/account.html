@@ -8,7 +8,7 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
 
-    <title>View Available Items</title>
+    <title>My Bookings</title>
 
   </head>
   <body>
@@ -16,8 +16,8 @@
     <div class="pos-f-t">
         <div class="collapse" id="navbarToggleExternalContent">
           <div class="bg-dark p-4">
-            <a class="nav-link text-white" href="home">Home</a>
-            <a class="nav-link text-white" href="account">My Account</a>
+            <a class="nav-link text-white" href="home.html">Home</a>
+            <a class="nav-link text-white" href="listings.html">Borrow an Item</a>
           </div>
         </div>
         <nav class="navbar navbar-dark bg-dark">
@@ -28,19 +28,32 @@
     </div>
 
     <div class="container mt-4">
-      <h1>Listings near me</h1>
+      <h1>Bookings</h1>
     </div>
 
     <!-- Dynamic list for items-->
     <div class="container">
-      <div class="list-items">
-          <ul class="list-group">
-              {% for row in listedItems %}
+      <div class="table-items">
+          <table class="table">
+
+            <thead class="thead-dark">
+              <tr>
+                <th scope="col">ID</th>
+                <th scope="col">Service Name</th>
+                <th scope="col">Start Date</th>
+                <th scope="col">End Date</th>
+                <th scope="col">Cost</th>
+              </tr>
+            </thead>
+
+            <tbody>
+              {% for row in myBookings %}
               <li>
-                {{ row }}
+                {{ row}}
               </li>
               {% endfor %}
-          </ul>
+            </tbody>
+          </table>
       </div>
     </div>
 
