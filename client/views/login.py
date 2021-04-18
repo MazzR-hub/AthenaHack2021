@@ -27,7 +27,7 @@ def display_signup():
         return redirect()
     form = RegistrationForm()
     if form.validate_on_submit():
-        user = User(email=form.email.data, first_name=form.first_name.data, surname=form.surname.data, password=from.password.data, membership=false, locId=1)
+        user = User(email=form.email.data, first_name=form.first_name.data, surname=form.surname.data, password=form.password.data, membership=false, locId=1)
         new_id = api.add_user(user)
         flash('Congratulations, you are now a registered user!')
         return redirect('/login')
