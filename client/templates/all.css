@@ -1,0 +1,92 @@
+#brand {
+    font-family: 'Pacifico';font-size: 30px;
+}
+
+/*search box css start here*/
+.search-sec{
+    padding: 2rem;
+}
+.search-slt{
+    display: block;
+    width: 100%;
+    font-size: 0.875rem;
+    line-height: 1.5;
+    color: #55595c;
+    background-color: #fff;
+    background-image: none;
+    border: 1px solid #ccc;
+    height: calc(3rem + 2px) !important;
+    border-radius:0;
+}
+.wrn-btn{
+    width: 100%;
+    font-size: 16px;
+    font-weight: 400;
+    text-transform: capitalize;
+    height: calc(3rem + 2px) !important;
+    border-radius:0;
+}
+
+#car-img{
+    height:550px;
+}
+
+
+@media (min-width: 992px){
+    .search-sec{
+        position: relative;
+        top: -250px;
+        background: rgba(26, 70, 104, 0.51);
+    }
+
+    .title{
+        position: relative;
+        text-align: center;
+        top: -320px;
+        color: white;
+        font-family: 'Pacifico';
+        font-size: 40px;
+}
+
+
+@media (max-width: 992px){
+    .search-sec{
+        background: #1A4668;
+    }
+}
+
+
+/* STYLING FOR CUSTOMER ACCOUNT*/
+
+.avatar img {
+    width: 200px;
+    height: 200px;
+}
+.rounded-circle {
+    border-radius: 50% !important;
+}
+img {
+    vertical-align: middle;
+    border-style: none;
+}
+.text-muted {
+    color: #aeb0b4 !important;
+}
+.text-muted {
+    font-weight: 300;
+}
+.form-control {
+    display: block;
+    width: 100%;
+    height: calc(1.5em + 0.75rem + 2px);
+    padding: 0.375rem 0.75rem;
+    font-size: 0.875rem;
+    font-weight: 400;
+    line-height: 1.5;
+    color: #4d5154;
+    background-color: #ffffff;
+    background-clip: padding-box;
+    border: 1px solid #eef0f3;
+    border-radius: 0.25rem;
+    transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}

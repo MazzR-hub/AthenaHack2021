@@ -14,20 +14,26 @@
   <body>
       <!-- first name surname email password membership locationid -->
       <!-- location:  name, address, city, userid, postcode-->
-    <div class="pos-f-t">
-        <div class="collapse" id="navbarToggleExternalContent">
-          <div class="bg-dark p-4">
-            <a class="nav-link text-white" href="home.html">Home</a>
-            <a class="nav-link text-white" href="listings.html">Borrow an Item</a>
-          </div>
+      <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand logo-font" href="home.html" id="brand">CommuniTools</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNavDropdown">
+          <ul class="navbar-nav">
+            <li class="nav-item active">
+              <a class="nav-link" href="home.html">Home <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="listings.html">Borrow</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="newlist.html">Rent Tools</a>
+            </li>
+          </ul>
         </div>
-        <nav class="navbar navbar-dark bg-dark">
-          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-          </button>
-        </nav>
-    </div>
-
+        <a class="nav-link" href="account.html">My Account</a>
+      </nav>
     <div class="container mt-4">
       <h1>Addresses</h1>
     </div>
