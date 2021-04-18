@@ -28,17 +28,45 @@
     </div>
 
     <div class="container mt-4">
-      <h1>Listings near me</h1>
-    </div>
-
-    <!-- Dynamic list for items-->
-    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-12 col-md-10 col-lg-8">
+            <form class="card card-sm">
+                <div class="card-body row no-gutters align-items-center">
+                    <div class="col-8">
+                        <input class="form-control form-control-med form-control-borderless" type="search" placeholder="Search topics or keywords">
+                    </div>
+                    <!--end of col-->
+                    <div class="col-1"></div>
+                    <div class="col-auto">
+                        <button class="btn btn-med btn-success" type="submit">Search</button>
+                    </div>
+                    <!--end of col-->
+                </div>
+                
+                
+                <!-- Filter drop down -->
+                <div class="filter">
+                  <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Filter
+                  </button>
+                  <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                    <a class="dropdown-item" href="#">Action</a>
+                    <a class="dropdown-item" href="#">Another action</a>
+                    <a class="dropdown-item" href="#">Something else here</a>
+                  </div>
+                </div>
+            </form>
+        </div>
+        <!--end of col-->
+      </div>
+      <!-- Dynamic list for items-->
       <div class="list-items">
           <ul class="list-group">
               {% listedItems %}
           </ul>
       </div>
     </div>
+
 
 
      
