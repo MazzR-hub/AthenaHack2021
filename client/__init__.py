@@ -12,6 +12,8 @@ app = Flask(__name__)
 app.secret_key = 'shh'
 login = LoginManager(app)
 
+app.static_folder = 'static'
+
 from client.views.login import login
 
 app.register_blueprint(homepage)

@@ -28,33 +28,68 @@
 }
 
 #car-img{
-    height:550px;
+    height:750px;
 }
 
 
 @media (min-width: 992px){
     .search-sec{
         position: relative;
-        top: -250px;
-        background: rgba(26, 70, 104, 0.51);
+        top: -550px;
+        background: rgba(23, 34, 43, 0.51);
+    }
+
+    .text{
+        position: relative;
+        text-align: center;
+        top: -620px;
     }
 
     .title{
-        position: relative;
-        text-align: center;
-        top: -320px;
         color: white;
         font-family: 'Pacifico';
-        font-size: 40px;
+        font-size: 80px;
+    }
+
+    .slogan{
+        color: white;
+        background: rgba(23, 34, 43, 0.51);
+    }
 }
 
 
 @media (max-width: 992px){
     .search-sec{
+        position: relative;
+        top: -550px;
         background: #1A4668;
+    }
+    .text{
+        position: relative;
+        text-align: center;
+        top: -620px;
+    }
+
+    .title{
+        color: white;
+        font-family: 'Pacifico';
+        font-size: 80px;
+    }
+
+    .slogan{
+        color: white;
+        background-color: black;
     }
 }
 
+.search-listings{
+    padding: 1em;
+    background: rgba(23, 34, 43, 0.51);
+}
+
+.bd-placeholder-img{
+    background-image: url('images/car-img2.jpeg');
+}
 
 /* STYLING FOR CUSTOMER ACCOUNT*/
 
