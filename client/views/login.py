@@ -1,7 +1,9 @@
 from flask import Blueprint, render_template
 from flask_login import current_user, login_user
-from client.models import User
-from client.database import api
+#from client.modele import User
+import sys
+sys.path.append("../database")
+import api
 
 login = Blueprint('login', __name__, template_folder='templates',
                  static_folder='static')

@@ -1,4 +1,4 @@
-from client.database import connect
+import connect
 
 def add_services(servicesDict):
     """

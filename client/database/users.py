@@ -1,4 +1,4 @@
-from client.database import connect
+import connect
 from passlib.hash import bcrypt
 
 '''table has'''

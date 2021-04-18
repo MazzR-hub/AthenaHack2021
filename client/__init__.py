@@ -1,18 +1,21 @@
 from flask import Flask
 from flask_login import LoginManager
+import sys 
+sys.path.append("./views")
 
-from client.views.homepage import homepage
+import homepage
+#from client.views import homepage
 
-from client.views.userpage import userpage
-from client.views.checkout import checkout
-from client.views.listings import listings
+import userpage
+import checkout
+import listings
 
 
 app = Flask(__name__)
 app.secret_key = 'shh'
 login = LoginManager(app)
 
-from client.views.login import login
+import login
 
 app.register_blueprint(homepage)
 app.register_blueprint(login)

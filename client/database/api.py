@@ -1,7 +1,7 @@
-from client.database import services
-from client.database import users
-from client.database import locations
-from client.database import bookings
+import services
+import users
+import locations
+import bookings
 
 # users functions
 add_user = users.add_user
@@ -23,6 +23,7 @@ add_location = locations.add_location
 get_loc_list = locations.get_loc_list
 get_loc_id = locations.get_loc_id
 get_loc_name = locations.get_loc_name
+get_loc_user = locations.get_loc_user
 
 #bookings
 create_booking = bookings.create_booking

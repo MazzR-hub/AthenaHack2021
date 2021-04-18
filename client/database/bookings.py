@@ -1,5 +1,5 @@
-from client.database import connect
-from client.database import services
+import connect
+import services
 
 def create_booking(bDict):
     """

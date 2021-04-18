@@ -1,4 +1,5 @@
-from client.database import connect
+#doesn't like this line cant locate client
+import connect
 ''' add the actual address now its gonna work more like users can have multiple addresses
     has address and lims to userid
  '''
@@ -96,3 +97,25 @@ def get_loc_id(name):
             conn.close()
 
     return locId
+
+def get_loc_user(user_id):
+    """
+    Returns entire list of location names for a specific user
+    """
+    sql = "SELECT name FROM Locations WHERE user_id =%s;"
+    conn = None
+    locations = None
+
+    try:
+        conn = connect.db_connection()
+        c = conn.cursor()
+        c.execute(sql, (user_id))
+        locations = c.fetchall()
+        c.close()
+    except Exception as error:
+        print(error)
+    finally:
+        if conn is not None:
+            conn.close()
+
+    return locations
