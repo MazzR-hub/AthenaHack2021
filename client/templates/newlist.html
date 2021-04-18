@@ -8,16 +8,17 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
     
-        <!-- Stylesheet -->
-        <link rel="preconnect" href="https://fonts.gstatic.com">
-        <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
-        <link href='all.css' rel='stylesheet'>
+    <!-- Stylesheet -->
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+    <link href='all.css' rel='stylesheet'>
 
     <title>New Tool Listing</title>
 
   </head>
+
+  
   <body>
-      
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
       <a class="navbar-brand logo-font" href="home.html" id="brand">CommuniTools</a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
@@ -39,51 +40,58 @@
       <a class="nav-link" href="account.html">My Account</a>
     </nav>
 
-    <div class="container mt-4">
-        <h1>Add an Item Listing</h1>
-    </div>
-
     <!-- Input form-->
-    <div class="container">
+    <div class="container mt-4">
         <form>
-            <div class="form-row">
-              <div class="form-group col-md-6">
-                <label for="inputName1">Item Name</label>
-                <input type="text" class="form-control" id="inputName1" placeholder="Name">
-              </div>
-            </div>
+            <div class="container border rounded">
+                <div class="col-md-2 float-right mr-5 mt-3">
+                    <div class="avatar">
+                    <img src="images/tools.jpg" alt="..." class="avatar-img rounded-circle" />
+                    </div>
+                    <div class="form-group mt-3">
+                        <input type="file" class="form-control-file" id="exampleFormControlFile1">
+                    </div>
+                </div>
 
-            <!-- Picklist of addresses -->
-            <div class="form-row">
-                <div class="form-group">
-                    <label for="addressSelect">Address</label>
-                    <select multiple class="form-control" id="addresssSelect">
-                        {% address-options %}
-                    </select>
+                <div class="form-row">
+                <div class="form-group col-md-6 mt-3">
+                    <label for="inputName1">Item Name</label>
+                    <input type="text" class="form-control" id="inputName1" placeholder="Name">
+                </div>
+                </div>
+
+                <!-- Picklist of addresses -->
+                <div class="form-row">
+                    <div class="form-group col-md-8">
+                        <label for="addressSelect">Address</label>
+                        <select multiple class="form-control" id="addresssSelect">
+                            {% address-options %}
+                        </select>
+                    </div>
+                </div>
+
+                <div class="form-row">
+                <div class="form-group col-md-2">
+                    <label for="inputPrice">Price</label>
+                    <input type="text" class="form-control" id="inputPrice">
+                </div>
+                </div>
+                <div class="form-row">
+                <div class="form-group col-md-4">
+                    <label for="inputStartDate">Start Date</label>
+                    <input type="date" class="form-control" id="inputStartDate">
+                    <!-- <select id="inputState" class="form-control">
+                    <option selected>Choose...</option>
+                    <option>...</option>
+                    </select> -->
+                </div>
+                <div class="form-group col-md-4">
+                    <label for="inputEndDate">End Date</label>
+                    <input type="date" class="form-control" id="inputEndDate">
+                </div>
                 </div>
             </div>
-
-            <div class="form-row">
-              <div class="form-group col-md-2">
-                <label for="inputPrice">Price</label>
-                <input type="text" class="form-control" id="inputPrice">
-              </div>
-            </div>
-            <div class="form-row">
-              <div class="form-group col-md-4">
-                <label for="inputStartDate">Start Date</label>
-                <input type="date" class="form-control" id="inputStartDate">
-                <!-- <select id="inputState" class="form-control">
-                  <option selected>Choose...</option>
-                  <option>...</option>
-                </select> -->
-              </div>
-              <div class="form-group col-md-4">
-                <label for="inputEndDate">End Date</label>
-                <input type="date" class="form-control" id="inputEndDate">
-              </div>
-            </div>
-            <button type="submit" class="btn btn-primary">Add Item</button>
+            <button type="submit" class="btn btn-primary mb-4 mt-4">Add Item</button>
           </form>
     </div>
 
